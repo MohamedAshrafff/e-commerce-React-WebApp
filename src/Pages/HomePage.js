@@ -1,12 +1,12 @@
 import React from "react";
-import Slider from "../Components/Slider";
+import Carousel from "../Components/Carousel";
 import ProductsList from "../Components/ProductsList";
-import NavBar from "../Components/NavBar";
 
 export default function HomePage() {
     return (
         <>
-            <Slider />
+            <Carousel />
+            <h1 className="text-center text-danger">NEW ARRIVALS</h1>
             <ProductsList />
         </>
     )

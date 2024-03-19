@@ -5,9 +5,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff !important;
+  font-family: "Croissant One", serif;
+  font-weight: 400;
+  font-style: normal;
+
+
+}
+
+.custom-font {
+  font-family: "Croissant One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+.lola:hover {
+  background-color: #f1f1f1 !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.sidebar li {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.sidebar li a {
+  text-decoration: none;
 }

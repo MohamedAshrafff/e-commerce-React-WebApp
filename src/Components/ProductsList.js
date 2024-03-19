@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react'
 import Product from "./Product"
+import { Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../Redux/Slices/products-slice';
 
 export default function ProductsList() {
     const api_URL = "https://fakestoreapi.com/products";
-    const [products, setProducts] = useState([])
+    const products = useSelector((state) => state.products)
     const [categories, setCategories] = useState([])
+    console.log(products);
 
-
-    const getProducts = () => {
-        fetch(api_URL)
-            .then((response) => response.json())
-            .then((data) => setProducts(data))
-    }
+    const dispatch = useDispatch()
 
     const getCategories = () => {
         fetch(`${api_URL}/categories`)
@@ -22,17 +21,17 @@ export default function ProductsList() {
     const getProductsInCategory = (catName) => {
         fetch(`${api_URL}/category/${catName}`)
             .then((response) => response.json())
-            .then((data) => setProducts(data))
+            .then(data => console.log(data))
 
     }
     useEffect(() => {
+        dispatch(getAllProducts())
         getCategories()
-        getProducts()
     }, [])
 
     const productsCards = products.map((prod) => {
         return (
-            <div className="col-3" style={{ marginBottom: "0.5%" }}>
+            <div key={prod.id} className="col-md-6 col-xl-3  w-auto" style={{ marginBottom: "5%" }}>
                 <Product product={prod} showButton={true} />
             </div>
         )
@@ -40,24 +39,25 @@ export default function ProductsList() {
 
     return (
         <>
-            <h2 className="text-center p-3">Our Products</h2>
-            <button className="btn btn-info" onClick={() => { getProducts() }} style={{ margin: "0.5%" }}>
+            {/* <button className="btn btn-info" onClick={() => { getProducts() }} style={{ margin: "0.5%" }}>
                 ALL
-            </button>
-            {categories.map((cat) => {
-                return (
-                    <button className="btn btn-info" key={cat} onClick={() => { getProductsInCategory(cat) }} style={{ margin: "0.5%" }}>
-                        {cat}
-                    </button>)
-            })}
+            </button> */}
+            <div className='d-flex justify-content-center mt-5'>
+                {categories.map((cat) => {
+                    return (
+                        <button className="btn btn-outline-dark w-auto" key={cat} onClick={() => { getProductsInCategory(cat) }} style={{ margin: "0.5%" }}>
+                            {cat}
+                        </button>)
+                })}
+            </div>
             {
                 products.length === 0 ? <h1>LOADING!</h1>
                     :
-                    <div className="container">
-                        <div className="row">
+                    <Container className='py-5 text-center'>
+                        <Row className='justify-content-center'>
                             {productsCards}
-                        </div>
-                    </div>
+                        </Row>
+                    </Container>
             }
         </>
     )

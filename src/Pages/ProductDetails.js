@@ -5,7 +5,7 @@ import Product from '../Components/Product';
 
 export default function ProductDetails() {
     const [product, setProduct] = useState({});
-    const api_url = "https://fakestoreapi.com/products/";
+    const api_url = "http://localhost:9000/products";
     const params = useParams();
     console.log(params);
     useEffect(() => {

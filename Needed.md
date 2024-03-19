@@ -1,0 +1,15 @@
+- category buttons
+- NEW ARRIVALS IN HOME PAGE
+- description control 
+- cards design 
+- admin panel with form (ADD , DELETE , EDIT)
+- SUCCESSFULLY ADDED TO CART ALERT
+- Side Bar Filters 
+- ![example](image.png)
+- Enhance UI OF CART 
+- Quantity Control in cart 
+- ADD ITEMS & CATEGORIES IN DB.JSON
+- FOOTER
+- ADD VIDEO
+- icon to show item added in cart 
+- LOGIN / LOGOUT
