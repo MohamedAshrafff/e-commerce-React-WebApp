@@ -42,13 +42,16 @@ export default function ProductsList() {
             {/* <button className="btn btn-info" onClick={() => { getProducts() }} style={{ margin: "0.5%" }}>
                 ALL
             </button> */}
-            <div className='d-flex justify-content-center mt-5'>
-                {categories.map((cat) => {
-                    return (
-                        <button className="btn btn-outline-dark w-auto" key={cat} onClick={() => { getProductsInCategory(cat) }} style={{ margin: "0.5%" }}>
-                            {cat}
-                        </button>)
-                })}
+            <div className='container mt-5'>
+                <h2>Categories</h2>
+                <div className='row justify-content-center mt-5 p-2'>
+                    {categories.map((cat) => {
+                        return (
+                            <button className="btn btn-outline-dark col w-auto" key={cat} onClick={() => { getProductsInCategory(cat) }} style={{ margin: "0.5%" }}>
+                                {cat}
+                            </button>)
+                    })}
+                </div>
             </div>
             {
                 products.length === 0 ? <h1>LOADING!</h1>

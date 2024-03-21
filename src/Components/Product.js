@@ -22,8 +22,8 @@ export default function Product(props) {
                     <Card.Title>{textSlicer(props.product.title)}</Card.Title>
                     <Card.Text> ${props.product.price}</Card.Text>
                 </Card.Body>
+                <Button variant="dark" className='col-9 align-self-center'>View Details</Button>
             </Link>
-            <Button variant="dark" className='col-9 align-self-center' onClick={() => dispatch(addToCart(props.product))}>Add to Cart</Button>
         </Card>
     )
 }

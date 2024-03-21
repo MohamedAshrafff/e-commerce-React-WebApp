@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Product from '../Components/Product';
+import ProductFullDetails from '../Components/ProductFullDetails';
 
 export default function ProductDetails() {
     const [product, setProduct] = useState({});
@@ -16,7 +17,8 @@ export default function ProductDetails() {
     console.log(product);
     return (
         <>
-            <Product product={product} showButton={false} />
+            <ProductFullDetails product={product} />
+            {/* <Product product={product} showButton={false} /> */}
         </>
     )
 }

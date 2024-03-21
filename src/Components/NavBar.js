@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from "react-redux";
 import { IoMdCart } from "react-icons/io";
+import { MdFavorite } from "react-icons/md";
 import { useState } from "react";
 
 export default function NavBar() {
@@ -24,13 +25,49 @@ export default function NavBar() {
                     <Navbar.Toggle aria-controls="navbarNav" onClick={() => toggleExpand()} />
                     <Navbar.Collapse id="navbarNav" >
                         <Nav className="me-auto text-center">
-                            <Link className={`nav-link ${loc.pathname == '/' ? 'active fw-bold' : ''}`} onClick={() => toggleExpand()} to={''}>Home</Link>
-                            <Link className={`nav-link ${loc.pathname == '/about' ? 'active  fw-bold' : ''}`} onClick={() => toggleExpand()} to={'about'}>About</Link>
-                            <Link className={`nav-link ${loc.pathname == '/products' ? 'active  fw-bold' : ''}`} onClick={() => toggleExpand()} to={'products'}>Products</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname == '/' ? 'active fw-bold  border-bottom border-2 ' : ''}`} onClick={() => toggleExpand()} to={''}>Home</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname == '/about' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleExpand()} to={'about'}>About</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname == '/products' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleExpand()} to={'products'}>Products</Link>
                         </Nav>
-                        <Link to={'cart'} style={{ textDecoration: 'none', color: '#FFF', display: 'flex', alignItems: 'center' }}>
-                            <IoMdCart size={22} />
-                            <div style={{ color: 'yellow', fontWeight: 'bold', fontSize: 16, marginLeft: '5px' }}>{cart.length}</div>
+                        <Link to={'cart'} className="rounded-circle" onClick={() => toggleExpand()}
+                            style={{
+                                textDecoration: 'none',
+                                color: '#FFF',
+                                position: 'relative',
+                                alignSelf: 'center',
+                            }}>
+                            <IoMdCart size={'1.8rem'} />
+                            <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                                style={{
+                                    color: "white",
+                                    width: '1.2rem',
+                                    height: '1.3rem',
+                                    position: 'absolute',
+                                    top: '0',
+                                    right: '0',
+                                    alignSelf: 'center',
+                                    transform: 'translate(80%, -45%)'
+                                }} >{cart.length}</div>
+                        </Link>
+                        <Link to={'favourites'} className="mx-3 rounded-circle" onClick={() => toggleExpand()}
+                            style={{
+                                textDecoration: 'none',
+                                color: '#FFF',
+                                position: 'relative',
+                                alignSelf: 'center',
+                            }}>
+                            <MdFavorite size={'1.8rem'} />
+                            <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                                style={{
+                                    color: "white",
+                                    width: '1.2rem',
+                                    height: '1.3rem',
+                                    position: 'absolute',
+                                    top: '0',
+                                    right: '0',
+                                    alignSelf: 'center',
+                                    transform: 'translate(80%, -45%)'
+                                }} >{0}</div>
                         </Link>
                     </Navbar.Collapse>
                 </Container>

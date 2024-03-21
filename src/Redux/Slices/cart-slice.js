@@ -14,6 +14,10 @@ const CartSlice = createSlice({
                 state.push(clonedItem);
             }
         },
+        // addToFavourites(state, action) {
+        //     const findProduct = state.find((item) => item.id === action.payload.id)
+        //     if(!findProduct) state.push(action.payload)
+        // },
         removeFromCart(state, action) {
             return state = state.filter((item) => item.id !== action.payload.id)
         },
