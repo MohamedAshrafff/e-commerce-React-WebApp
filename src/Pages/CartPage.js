@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearCart, removeFromCart } from '../Redux/Slices/cart-slice'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function CartPage() {
-    const cart = useSelector((state) => state.cart)
+    const cart = useSelector((state) => state.lists.cart)
     const dispatch = useDispatch();
     const cartItems = cart.map((item) => {
         return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../Redux/Slices/cart-slice';
+import { addToCart, add, addToFavourites } from '../Redux/Slices/cart-slice';
 
 export default function ProductFullDetails(props) {
     const { product } = props;
@@ -13,7 +13,8 @@ export default function ProductFullDetails(props) {
                 <div className='col-md-6  d-flex justify-content-center align-items-center mb-3'>
                     <img src={product.image} alt="Product" className="img-fluid "
                         style={{
-                            width: '60%',
+                            height: '50vh',
+                            objectFit: 'cover'
                         }} />
                 </div>
                 <div className='col-md-6 text-center'>
@@ -26,7 +27,7 @@ export default function ProductFullDetails(props) {
                     <hr />
                     <div className='row justify-content-around my-5'>
                         <button className=" col-5 btn btn-danger mb-5" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
-                        <button className="col-5 btn btn-success mb-5">Add to Favourites</button>
+                        <button className="col-5 btn btn-success mb-5" onClick={() => dispatch(addToFavourites(product))}>Add to Favourites</button>
                     </div>
                 </div>
             </div>

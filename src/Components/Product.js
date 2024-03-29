@@ -15,12 +15,12 @@ export default function Product(props) {
     }
     const dispatch = useDispatch();
     return (
-        <Card className='lola p-3 ' style={{ width: '18rem' }}>
+        <Card className='lola p-3 text-center' style={{ width: '18rem' }}>
             <Link to={`products/${props.product.id}`} className='text-dark' style={{ textDecoration: 'none' }}>
                 <Card.Img variant="top" src={props.product.image} style={styles.image} />
                 <Card.Body >
-                    <Card.Title>{textSlicer(props.product.title)}</Card.Title>
-                    <Card.Text> ${props.product.price}</Card.Text>
+                    <Card.Title className="align-items-baseline mb-4">{textSlicer(props.product.title)}</Card.Title>
+                    <Card.Text className="fs-3"> ${props.product.price}</Card.Text>
                 </Card.Body>
                 <Button variant="dark" className='col-9 align-self-center'>View Details</Button>
             </Link>
@@ -29,7 +29,8 @@ export default function Product(props) {
 }
 const styles = {
     image: {
-        height: '300px'
+        height: '300px',
+        // objectFit: 'cover'
     },
 
 }

@@ -9,15 +9,16 @@ import { useState } from "react";
 
 export default function NavBar() {
     const [expanded, setExpanded] = useState(false);
-    const cart = useSelector((state) => state.cart);
+    const cart = useSelector((state) => state.lists.cart);
+    const favourites = useSelector((state) => state.lists.favourites);
     const loc = useLocation();
-    console.log(loc.pathname);
     const toggleExpand = () => {
         expanded ? setExpanded(false) : setExpanded(true);
     }
+    const navHeight = window.innerWidth >= 766 ? '3.5rem' : '';
     return (
         <>
-            <Navbar expand="md" variant="dark" fixed="top" className="bg-dark " expanded={expanded}>
+            <Navbar expand="md" variant="dark" fixed="top" className="bg-dark " style={{ height: navHeight }} expanded={expanded}>
                 <Container>
                     <Link to={''} style={{ textDecoration: 'none' }}>
                         <Navbar.Brand>E-Commerce</Navbar.Brand>
@@ -67,7 +68,7 @@ export default function NavBar() {
                                     right: '0',
                                     alignSelf: 'center',
                                     transform: 'translate(80%, -45%)'
-                                }} >{0}</div>
+                                }} >{favourites.length}</div>
                         </Link>
                     </Navbar.Collapse>
                 </Container>
