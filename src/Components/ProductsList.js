@@ -10,10 +10,10 @@ export default function ProductsList() {
     const isLoading = useSelector((state) => state.products.loading)
     const categories = useSelector((state) => state.products.categories)
     const items = useSelector((state) => state.products.items)
-    const [data, setData] = useState(items)
     const selectedCategory = useSelector((state) => state.products.selectedCategory)
+    const itemsInCategory = useSelector((state) => state.products.itemsInCategory)
 
-    const handleClick = (cat) => {
+    const handleCategoryClick = (cat) => {
         dispatch(setCategory(cat))
         cat == 'All' ? dispatch(getAllProducts()) : dispatch(getProductsInCategory(cat))
     }
@@ -23,21 +23,19 @@ export default function ProductsList() {
         dispatch(getCategories())
     }, [])
 
-    useEffect(() => {
-        setData(items)
-    }, [items])
+    function productsCards(dataStored) {
+        return dataStored.map((prod) => {
+            return (
+                <div key={prod.id} className="col-md-6 col-xl-3  w-auto" style={{ marginBottom: "5%" }}>
+                    <Product product={prod} showButton={true} />
+                </div>
+            )
+        })
 
-    const productsCards = data.map((prod) => {
-        return (
-            <div key={prod.id} className="col-md-6 col-xl-3  w-auto" style={{ marginBottom: "5%" }}>
-                <Product product={prod} showButton={true} />
-            </div>
-        )
-    })
-
+    }
     const categoriesButtons = categories.map((cat) => {
         return (
-            <button className={`btn btn-outline-dark ${selectedCategory == cat ? 'active' : ''} col w-auto`} key={cat} onClick={() => { handleClick(cat) }} style={{ margin: "0.5%" }}>
+            <button className={`btn btn-outline-dark ${selectedCategory == cat ? 'active' : ''} col w-auto`} key={cat} onClick={() => { handleCategoryClick(cat) }} style={{ margin: "0.5%" }}>
                 {cat}
             </button >
         )
@@ -48,7 +46,7 @@ export default function ProductsList() {
             <div className='container mt-5'>
                 <h2>Browse By Category</h2>
                 <div className='text-center'>
-                    <button className={`btn btn-outline-dark ${selectedCategory == 'All' ? 'active' : ''} col w-auto`} onClick={() => { handleClick('All') }} style={{ margin: "0.5%" }}>
+                    <button className={`btn btn-outline-dark ${selectedCategory == 'All' ? 'active' : ''} col w-auto`} onClick={() => { handleCategoryClick('All') }} style={{ margin: "0.5%" }}>
                         All
                     </button>
                     {categoriesButtons}
@@ -60,7 +58,7 @@ export default function ProductsList() {
                     :
                     <Container className='py-5 text-center'>
                         <Row className='justify-content-center'>
-                            {productsCards}
+                            {selectedCategory === 'All' ? productsCards(items) : productsCards(itemsInCategory)}
                         </Row>
                     </Container>
             }

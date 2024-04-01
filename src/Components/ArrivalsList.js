@@ -14,7 +14,8 @@ export default function ArrivalsList() {
     const [items, setItems] = useState({ data: [...newItems], filter: 'random' })
 
     const handleFilter = (filter) => {
-        const clone = filter === 'lowest' ? items.data.sort((a, b) => a.price - b.price) : filter === 'highest' ? items.data.sort((a, b) => b.price - a.price) : items.data.sort((a, b) => b.rating.rate - a.rating.rate)
+        const clone = filter === 'lowest' ? items.data.sort((a, b) => a.price - b.price) : filter === 'highest' ? items.data.sort((a, b) => b.price - a.price) : filter === 'rating' ? items.data.sort((a, b) => b.rating.rate - a.rating.rate) : newItems
+        console.log(clone)
         setItems({ data: [...clone], filter: filter })
     }
 
@@ -27,9 +28,12 @@ export default function ArrivalsList() {
         dispatch(getAllProducts())
     }, [])
 
+    useEffect(() => {
+        setItems({ data: [...newItems], filter: 'random' })
+    }, [newItems])
     const filterButtons = filters.map((filter) => {
         return (
-            <button key={filter} className={`btn btn-outline-danger ${items.filter === filter ? 'active' : ''} w-auto`} onClick={() => { handleFilter(filter) }}>{filter}</button>
+            <button key={filter} className={`btn btn-outline-danger ${items.filter === filter ? 'active' : ''} w-auto`} onClick={() => { handleFilter(filter) }}>{`By ${filter} ${filter !== 'rating' ? 'price' : ''} `}</button>
         )
     })
     return (

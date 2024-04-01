@@ -75,7 +75,7 @@ const ProductsSlice = createSlice({
                 loading: false,
                 failed: false,
                 fulfilled: true,
-                items: action.payload
+                itemsInCategory: action.payload
             }
         });
         builder.addCase(getProductsInCategory.pending, (state, action) => {
@@ -84,7 +84,7 @@ const ProductsSlice = createSlice({
                 loading: true,
                 failed: false,
                 fulfilled: false,
-                items: []
+                itemsInCategory: []
             }
         });
         builder.addCase(getProductsInCategory.rejected, (state, action) => {
@@ -93,7 +93,7 @@ const ProductsSlice = createSlice({
                 loading: false,
                 failed: true,
                 fulfilled: false,
-                items: []
+                itemsInCategory: []
             }
         });
         builder.addCase(getCategories.fulfilled, (state, action) => {
