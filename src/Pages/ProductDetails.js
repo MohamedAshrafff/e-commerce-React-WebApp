@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Product from '../Components/Product';
 import ProductFullDetails from '../Components/ProductFullDetails';
+import LoadingSpinner from '../Components/LoadingSpinner';
 
 export default function ProductDetails() {
     const [product, setProduct] = useState({});
@@ -17,8 +18,10 @@ export default function ProductDetails() {
 
     return (
         <>
-            <ProductFullDetails product={product} />
-            {/* <Product product={product} showButton={false} /> */}
+            {!product.id ?
+                <div className='d-flex justify-content-center mt-5'><LoadingSpinner /></div>
+                : <ProductFullDetails product={product} />
+            }
         </>
     )
 }

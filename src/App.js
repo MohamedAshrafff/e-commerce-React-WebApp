@@ -8,6 +8,7 @@ import ProductsPage from "./Pages/ProductsPage";
 import CartPage from "./Pages/CartPage";
 import './index.css';
 import FavouritesPage from "./Pages/FavouritesPage";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="products/:productId" element={<ProductDetails />} />
         </Routes>
+        <Footer />
       </div>
     </>
   );

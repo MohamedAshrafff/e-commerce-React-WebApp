@@ -21,12 +21,15 @@ export default function ProductsList() {
     useEffect(() => {
         dispatch(getAllProducts())
         dispatch(getCategories())
+        if (selectedCategory !== 'All') {
+            dispatch(getProductsInCategory(selectedCategory))
+        }
     }, [])
 
     function productsCards(dataStored) {
         return dataStored.map((prod) => {
             return (
-                <div key={prod.id} className="col-md-6 col-xl-3  w-auto" style={{ marginBottom: "5%" }}>
+                <div key={prod.id} className="col-md-6 col-xl-3 w-auto" style={{ marginBottom: "5%" }}>
                     <Product product={prod} showButton={true} />
                 </div>
             )
