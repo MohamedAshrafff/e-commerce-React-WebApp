@@ -3,7 +3,7 @@ import Product from "./Product"
 import { Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts, getCategories, getProductsInCategory, setCategory } from '../Redux/Slices/products-slice';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from './MainComponents/LoadingSpinner';
 
 export default function ProductsList() {
     const dispatch = useDispatch()

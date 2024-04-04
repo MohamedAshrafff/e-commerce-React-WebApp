@@ -4,7 +4,7 @@ import { Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Product from './Product'
 import { getAllProducts } from '../Redux/Slices/products-slice'
-import LoadingSpinner from './LoadingSpinner'
+import LoadingSpinner from './MainComponents/LoadingSpinner'
 
 export default function ArrivalsList() {
     const newItems = useSelector((state) => state.products.items)

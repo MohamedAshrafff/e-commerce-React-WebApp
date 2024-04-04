@@ -14,12 +14,16 @@ body {
 }
 
 .custom-font {
-  font-family: "Croissant One", serif;
-  font-weight: 400;
+  font-family: "Lato", Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
   font-style: normal;
 }
 
-
+.heading-font {
+  font-family: "Croissant One", serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
 .lola:hover {
   background-color: #f1f1f1 !important;

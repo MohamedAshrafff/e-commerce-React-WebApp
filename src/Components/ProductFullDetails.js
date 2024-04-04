@@ -1,8 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, add, addToFavourites } from '../Redux/Slices/cart-slice';
 import { setCategory } from '../Redux/Slices/products-slice';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 export default function ProductFullDetails(props) {
     const { product } = props;
@@ -12,6 +13,23 @@ export default function ProductFullDetails(props) {
     const onCategoryClick = (category) => {
         dispatch(setCategory(category))
         navigate('/products')
+    }
+
+    const onActionBtnClick = (type, product) => {
+
+        type === 'Cart' ? dispatch(addToCart(product)) : dispatch(addToFavourites(product))
+        Swal.fire({
+            title: "Item Added Successfully!",
+            text: "Do you want to continue shopping or complete checkout?",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "green",
+            confirmButtonText: "Continue Shopping",
+            cancelButtonText: "Complete Checkout",
+        }).then((result) => {
+            if (!result.isConfirmed) navigate('/cart')
+        });
     }
 
     return (
@@ -32,9 +50,8 @@ export default function ProductFullDetails(props) {
                     {/* {product.rating && <h3>Rating: {product.rating.rate} ({product.rating.count})</h3>} */}
                     <h3 >Price: <span className='fw-bold'>${product.price}</span></h3>
                     <hr />
-                    <div className='row justify-content-around my-5'>
-                        <button className=" col-5 btn btn-danger mb-5" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
-                        <button className="col-5 btn btn-success mb-5" onClick={() => dispatch(addToFavourites(product))}>Add to Favourites</button>
+                    <div className='row justify-content-around mt-5'>
+                        <button className=" col-6  btn btn-danger mb-5" onClick={() => onActionBtnClick("Cart", product)}>{`Add to Cart`}</button>
                     </div>
                 </div>
             </div>

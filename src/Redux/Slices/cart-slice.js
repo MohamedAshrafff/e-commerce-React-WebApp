@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const state = {
     cart: [],
-    favourites: []
+    cartFound: false,
 }
 const CartSlice = createSlice({
     name: "cartSlice",
@@ -15,28 +15,16 @@ const CartSlice = createSlice({
             }
             else {
                 const clonedItem = { ...action.payload, quantity: 1 }
+                state.cartFound = true;
                 state.cart.push(clonedItem);
             }
         },
-        addToFavourites(state, action) {
-            const findProduct = state.favourites.find((item) => item.id === action.payload.id)
-            if (!findProduct) {
-                const clonedItem = { ...action.payload, isFavourited: true }
-                state.favourites.push(clonedItem);
-            }
-        },
-        // removeFromFavourites(state, action) {
-        //     const findProduct = state.favourites.find((item) => item.id === action.payload.id)
-        //     if (findProduct) {
-
-        //         state.filter.filter((item) => item.id !== action.payload.id)
-        //     }
-        // },
         removeFromCart(state, action) {
             const clonedCart = state.cart.filter((item) => item.id !== action.payload.id)
             return { ...state, cart: clonedCart }
         },
         clearCart(state, action) {
+
             return { ...state, cart: [] }
         },
     },

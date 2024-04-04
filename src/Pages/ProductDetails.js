@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Product from '../Components/Product';
 import ProductFullDetails from '../Components/ProductFullDetails';
-import LoadingSpinner from '../Components/LoadingSpinner';
+import LoadingSpinner from '../Components/MainComponents/LoadingSpinner';
 
 export default function ProductDetails() {
     const [product, setProduct] = useState({});
