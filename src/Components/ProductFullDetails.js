@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, add, addToFavourites } from '../Redux/Slices/cart-slice';
+import { addToCart, addToFavourites } from '../Redux/Slices/cart-slice';
 import { setCategory } from '../Redux/Slices/products-slice';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
@@ -9,27 +9,30 @@ export default function ProductFullDetails(props) {
     const { product } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate()
-
+    const cart = useSelector(state => state.lists.cart)
+    const isFound = cart.find((item) => item.id === product.id)
     const onCategoryClick = (category) => {
         dispatch(setCategory(category))
         navigate('/products')
     }
 
-    const onActionBtnClick = (type, product) => {
-
-        type === 'Cart' ? dispatch(addToCart(product)) : dispatch(addToFavourites(product))
-        Swal.fire({
-            title: "Item Added Successfully!",
-            text: "Do you want to continue shopping or complete checkout?",
-            icon: "success",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "green",
-            confirmButtonText: "Continue Shopping",
-            cancelButtonText: "Complete Checkout",
-        }).then((result) => {
-            if (!result.isConfirmed) navigate('/cart')
-        });
+    const onActionBtnClick = (product) => {
+        if (isFound) navigate('/cart')
+        else {
+            dispatch(addToCart(product))
+            Swal.fire({
+                title: "Item Added Successfully!",
+                text: "Do you want to continue shopping or complete checkout?",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "green",
+                confirmButtonText: "Continue Shopping",
+                cancelButtonText: "Complete Checkout",
+            }).then((result) => {
+                if (!result.isConfirmed) navigate('/cart')
+            });
+        }
     }
 
     return (
@@ -51,7 +54,7 @@ export default function ProductFullDetails(props) {
                     <h3 >Price: <span className='fw-bold'>${product.price}</span></h3>
                     <hr />
                     <div className='row justify-content-around mt-5'>
-                        <button className=" col-6  btn btn-danger mb-5" onClick={() => onActionBtnClick("Cart", product)}>{`Add to Cart`}</button>
+                        <button className={`col-6 btn mb-5 ${isFound ? `btn-success` : `btn-danger`}`} onClick={() => onActionBtnClick(product)}>{isFound ? `Already Added! Proceed to Checkout` : `Add to Cart`}</button>
                     </div>
                 </div>
             </div>
