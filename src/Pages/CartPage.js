@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Container, } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-
 import CartProduct from '../Components/CartProduct';
 import { Link } from 'react-router-dom';
+import CheckoutSection from '../Components/CheckoutSection';
+
 export default function CartPage() {
 
     const cart = useSelector((state) => state.lists.cart)
@@ -40,7 +41,8 @@ export default function CartPage() {
                             <hr className='mt-0' />
                             {cartItems}
                         </div>
-                        <p className='fs-2 text-end text-danger'>Total Cart : ${totalCartPrice.toFixed(2)}</p>
+                        <p className='fs-2 text-center text-danger'><span className='text-dark'>Total Cart : </span>${totalCartPrice.toFixed(2)}</p>
+                        <CheckoutSection />
                     </>
             }
         </Container>

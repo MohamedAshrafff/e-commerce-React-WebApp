@@ -3,6 +3,7 @@ import { Row } from 'react-bootstrap'
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { addToCart, removeFromCart, removeProduct } from '../Redux/Slices/cart-slice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 export default function CartProduct(prod) {
     const product = { ...prod.item };
     const dispatch = useDispatch();
@@ -12,10 +13,12 @@ export default function CartProduct(prod) {
         <>
             <Row style={styles.size} >
                 <div className='col-3 d-flex justify-content-center align-items-center' >
-                    <img src={product.image} style={{ ...styles.imageStyle, ...styles.weight }} alt="product" />
+                    <Link to={`/products/${product.id}`}>
+                        <img src={product.image} style={{ ...styles.imageStyle, ...styles.weight }} alt="product" />
+                    </Link>
                 </div>
                 <div className='col-7 d-flex justify-content-center flex-column'>
-                    <p>{product.title}</p>
+                    <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'black' }}>{product.title}</Link>
                     <p>Price : <span className='text-danger' style={{ ...styles.weight }}>${product.price}</span></p>
                     <div className='d-flex justify-content-start'>
                         <div>

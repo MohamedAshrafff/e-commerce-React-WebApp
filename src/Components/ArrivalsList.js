@@ -10,12 +10,14 @@ export default function ArrivalsList() {
     const newItems = useSelector((state) => state.products.items)
     const isLoading = useSelector((state) => state.products.loading)
     const dispatch = useDispatch()
-    const filters = ['lowest', 'highest', 'rating']
     const [items, setItems] = useState({ data: [...newItems], filter: 'random' })
 
     const handleFilter = (filter) => {
-        const clone = filter === 'lowest' ? items.data.sort((a, b) => a.price - b.price) : filter === 'highest' ? items.data.sort((a, b) => b.price - a.price) : filter === 'rating' ? items.data.sort((a, b) => b.rating.rate - a.rating.rate) : newItems
-        console.log(clone)
+        const clone = filter === 'Low to High' ?
+            items.data.sort((a, b) => a.price - b.price) : filter === 'High to Low' ?
+                items.data.sort((a, b) => b.price - a.price) : filter === 'Rating' ?
+                    items.data.sort((a, b) => b.rating.rate - a.rating.rate) : newItems
+
         setItems({ data: [...clone], filter: filter })
     }
 
@@ -31,15 +33,20 @@ export default function ArrivalsList() {
     useEffect(() => {
         setItems({ data: [...newItems], filter: 'random' })
     }, [newItems])
-    const filterButtons = filters.map((filter) => {
-        return (
-            <button key={filter} className={`btn btn-outline-danger ${items.filter === filter ? 'active' : ''} w-auto`} onClick={() => { handleFilter(filter) }}>{`By ${filter} ${filter !== 'rating' ? 'price' : ''} `}</button>
-        )
-    })
+
     return (
         <Container>
             <div className='text-center d-flex justify-content-evenly w-auto'>
-                {filterButtons}
+                <div class="btn-group">
+                    <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {items.filter === 'random' ? 'Filter By' : 'Filter by ' + items.filter}
+                    </button>
+                    <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item" onClick={() => { handleFilter('High to Low') }}>High To Low</a></li>
+                        <li><a class="dropdown-item" onClick={() => { handleFilter('Low to High') }}>Low to High</a></li>
+                        <li><a class="dropdown-item" onClick={() => { handleFilter('Rating') }}>Rating</a></li>
+                    </ul>
+                </div>
             </div>
             {isLoading ?
                 <div className='d-flex justify-content-center mt-5 '> < LoadingSpinner /> </div>
