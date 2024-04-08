@@ -8,15 +8,16 @@ import CheckoutSection from '../Components/CheckoutSection';
 export default function CartPage() {
 
     const cart = useSelector((state) => state.lists.cart)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const cartItems = cart.map((item) => {
         return (
             <CartProduct key={item.id} item={item} />
         )
     })
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     const totalCartPrice = cart.reduce((accumaltor, item) => accumaltor += (item.quantity * item.price), 0)
     return (

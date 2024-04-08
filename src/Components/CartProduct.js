@@ -34,7 +34,7 @@ export default function CartProduct(prod) {
                             </button>
                         </div>
                         <div>
-                            <span className='text-end text-danger lola fs-4 ms-5 ' onClick={() => { dispatch(removeProduct(product)) }}>
+                            <span className='text-end text-danger lola fs-4 ms-2' onClick={() => { dispatch(removeProduct(product)) }}>
                                 <RiDeleteBin6Fill />
                             </span>
                         </div>
