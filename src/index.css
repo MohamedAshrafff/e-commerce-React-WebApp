@@ -43,3 +43,7 @@ code {
 .sidebar li a {
   text-decoration: none;
 }
+
+.slick-slide>div {
+  margin: 0 10px;
+}

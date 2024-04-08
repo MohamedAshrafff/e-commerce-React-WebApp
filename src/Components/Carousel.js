@@ -8,13 +8,9 @@ export default function Carousel() {
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="https://smhttp-ssl-73217.nexcesscdn.net/pub/media/wysiwyg/march_2024/paymob36_mainbanner_web_ar_new.png" className="d-block w-100" alt="..." />
-                    </div>
-                    <div className="carousel-item">
                         <img src="https://smhttp-ssl-73217.nexcesscdn.net/pub/media/wysiwyg/march_2024/paymob36_mainbanner_web_ar_new.png" className="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">

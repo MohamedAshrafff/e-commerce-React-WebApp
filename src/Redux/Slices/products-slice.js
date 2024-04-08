@@ -9,7 +9,8 @@ const state = {
     fulfilled: false,
     failed: false,
     loading: false,
-    selectedCategory: 'All'
+    selectedCategory: 'All',
+    product: {}
 }
 
 
@@ -31,6 +32,11 @@ export const getCategories = createAsyncThunk('/productsSlice/fetchCategories', 
     return data
 })
 
+export const getProduct = createAsyncThunk('/productsSlice/fetchProduct', async (id) => {
+    const res = await fetch(`${api_URL}/products/${id}`)
+    const data = await res.json()
+    return data
+})
 
 
 const ProductsSlice = createSlice({
@@ -121,6 +127,27 @@ const ProductsSlice = createSlice({
                 failed: true,
                 fulfilled: false,
                 categories: []
+            }
+        });
+        builder.addCase(getProduct.fulfilled, (state, action) => {
+            return {
+                ...state,
+                productLoading: false,
+                product: action.payload
+            }
+        });
+        builder.addCase(getProduct.pending, (state, action) => {
+            return {
+                ...state,
+                productLoading: true,
+                product: {}
+            }
+        });
+        builder.addCase(getProduct.rejected, (state, action) => {
+            return {
+                ...state,
+                productLoading: false,
+                product: {}
             }
         });
     },

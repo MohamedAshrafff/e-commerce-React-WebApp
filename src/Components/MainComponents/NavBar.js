@@ -30,6 +30,7 @@ export default function NavBar() {
                             <Link className={`nav-link mx-3 ${loc.pathname == '/' ? 'active fw-bold  border-bottom border-2 ' : ''}`} onClick={() => toggleChecker()} to={''}>Home</Link>
                             <Link className={`nav-link mx-3 ${loc.pathname == '/about' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'about'}>About</Link>
                             <Link className={`nav-link mx-3 ${loc.pathname == '/products' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'products'}>Products</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname == '/other' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'other'}>Other</Link>
                         </Nav>
                         {expanded && <div style={{ height: '20px' }}></div>}
                         <Link to={'cart'} className="rounded-circle" onClick={() => toggleChecker()}

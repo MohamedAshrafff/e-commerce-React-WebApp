@@ -8,6 +8,7 @@ import ProductsPage from "./Pages/ProductsPage";
 import CartPage from "./Pages/CartPage";
 import './index.css';
 import Footer from "./Components/MainComponents/Footer";
+import OtherPage from "./Pages/OtherPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="cart" element={<CartPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:productId" element={<ProductDetails />} />
+          <Route path="/other" element={<OtherPage />} />
         </Routes>
         <Footer />
       </div>

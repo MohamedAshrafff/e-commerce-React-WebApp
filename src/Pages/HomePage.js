@@ -10,7 +10,6 @@ export default function HomePage() {
     return (
         <span style={{ minHeight: '100vh' }}>
             <Carousel />
-            <h1 className="text-center text-danger">NEW ARRIVALS</h1>
             <ArrivalsList />
         </span>
     )

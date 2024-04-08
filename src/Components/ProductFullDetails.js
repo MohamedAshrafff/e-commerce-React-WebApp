@@ -41,8 +41,9 @@ export default function ProductFullDetails(props) {
                 <div className='col-md-6  d-flex justify-content-center align-items-center mb-3'>
                     <img src={product.image} alt="Product" className="img-fluid "
                         style={{
-                            height: '50vh',
-                            objectFit: 'cover'
+                            maxHeight: '50vh',
+                            objectFit: 'cover',
+                            maxWidth: '100%',
                         }} />
                 </div>
                 <div className='col-md-6 text-center'>
@@ -51,7 +52,7 @@ export default function ProductFullDetails(props) {
                     <h3 className='btn btn-outline active mb-3' onClick={() => { onCategoryClick(product.category) }}>{product.category}</h3>
                     <p>{product.description}</p>
                     {/* {product.rating && <h3>Rating: {product.rating.rate} ({product.rating.count})</h3>} */}
-                    <h3 >Price: <span className='fw-bold'>${product.price}</span></h3>
+                    <h3 ><span className='fw-bold text-danger'>${product.price}</span></h3>
                     <hr />
                     <div className='row justify-content-around mt-5'>
                         <button className={`col-6 btn mb-5 ${isFound ? `btn-success` : `btn-danger`}`} onClick={() => onActionBtnClick(product)}>{isFound ? `Already Added! Proceed to Checkout` : `Add to Cart`}</button>

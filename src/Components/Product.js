@@ -10,10 +10,15 @@ export default function Product(props) {
             <Link to={`/products/${props.product.id}`} className='text-dark' style={{ textDecoration: 'none' }}>
                 <Card.Img variant="top" src={props.product.image} style={styles.image} />
                 <Card.Body >
-                    <Card.Title className="align-items-baseline mb-4">{props.product.title}</Card.Title>
-                    <Card.Text className='align-self-end'> Rating: <span className="text-danger">{props.product.rating.rate}</span>
-                    </Card.Text>
-                    <Card.Text className="fs-3 "> ${props.product.price}</Card.Text>
+                    <Card.Title className="align-items-baseline mb-4 fw-bold">{props.product.title}</Card.Title>
+                    <div className="">
+                        <Card.Text className=''> Rating: <span className="text-danger heading-font">{props.product.rating.rate}</span>
+                        </Card.Text>
+                        {/* <span className="text-danger text-end heading-font">
+                            NEW ARRIVAL
+                        </span> */}
+                    </div>
+                    <Card.Text className="fs-3 ">${props.product.price}</Card.Text>
                 </Card.Body>
                 <Button variant="dark" className='col-9 align-self-center'>View Details</Button>
             </Link>

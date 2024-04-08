@@ -36,24 +36,27 @@ export default function ArrivalsList() {
 
     return (
         <Container>
-            <div className='text-center d-flex justify-content-evenly w-auto'>
-                <div class="btn-group">
-                    <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <p className='fs-1 pt-5 text-center text-danger'>New Arrivals!</p>
+            <div className='text-center d-flex justify-content-center w-auto'>
+                <div className="btn-group ">
+                    <button className="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {items.filter === 'random' ? 'Filter By' : 'Filter by ' + items.filter}
                     </button>
-                    <ul class="dropdown-menu ">
-                        <li><a class="dropdown-item" onClick={() => { handleFilter('High to Low') }}>High To Low</a></li>
-                        <li><a class="dropdown-item" onClick={() => { handleFilter('Low to High') }}>Low to High</a></li>
-                        <li><a class="dropdown-item" onClick={() => { handleFilter('Rating') }}>Rating</a></li>
+                    <ul className="dropdown-menu ">
+                        <li><a className="dropdown-item" onClick={() => { handleFilter('High to Low') }}>High To Low Price</a></li>
+                        <li><a className="dropdown-item" onClick={() => { handleFilter('Low to High') }}>Low to High Price</a></li>
+                        <li><a className="dropdown-item" onClick={() => { handleFilter('Rating') }}>Rating</a></li>
                     </ul>
                 </div>
             </div>
             {isLoading ?
                 <div className='d-flex justify-content-center mt-5 '> < LoadingSpinner /> </div>
                 :
-                <Row md={2} lg={3} xs={1} className='mt-4 g-3 justify-content-around w-auto'>
-                    {newArrivals}
-                </Row>
+                <>
+                    <Row md={2} lg={3} xs={1} className='mt-4 g-3 justify-content-around w-auto'>
+                        {newArrivals}
+                    </Row>
+                </>
             }
         </Container>
     )

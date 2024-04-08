@@ -1,11 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '../Redux/Slices/cart-slice';
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutSection() {
+
+    const cart = useSelector((state) => state.lists.cart)
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const handleClick = () => {
+        const localCartStorage = [] = localStorage.getItem('Order') ? JSON.parse(localStorage.getItem('Order')) : []
+        let clonedCart = [[...cart], [{ date: (new Date().getDate() + `-` + new Date().getMonth() + `-` + new Date().getFullYear()) }]]
+        localCartStorage.push([...clonedCart])
+        localStorage.clear()
+        localStorage.setItem('Order', JSON.stringify(localCartStorage))
+
+        dispatch(clearCart())
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Order Placed Successfully!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        navigate('/other')
+    }
+
     return (
         <div className="row d-flex flex-column" >
             <div className='col text-center mb-2'>
-                <Link to={'/'} className="btn btn-dark col-md-2 col-6 mb-3">Checkout</Link>
+                <button className="btn btn-dark col-md-2 col-6 mb-3" onClick={() => { handleClick() }}>Checkout</button>
                 <p>Tax included. Shipping and discounts calculated at checkout.</p>
             </div>
             <div className='col'>
@@ -30,6 +55,6 @@ export default function CheckoutSection() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
