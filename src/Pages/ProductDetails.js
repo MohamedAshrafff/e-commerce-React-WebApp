@@ -18,7 +18,7 @@ export default function ProductDetails() {
         dispatch(getProduct(params.productId))
         dispatch(getAllProducts())
         window.scrollTo(0, 0)
-    }, [params.productId]);
+    }, [params.productId, dispatch]);
 
     return (
         <div style={{ minHeight: '100vh' }}>

@@ -24,7 +24,7 @@ export default function ProductsList() {
         if (selectedCategory !== 'All') {
             dispatch(getProductsInCategory(selectedCategory))
         }
-    }, [])
+    }, [dispatch, selectedCategory])
 
     function productsCards(dataStored) {
         return dataStored.map((prod) => {

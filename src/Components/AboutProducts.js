@@ -12,7 +12,7 @@ export default function AboutProducts() {
     useEffect(() => {
         dispatch(getAllProducts())
         dispatch(getCategories())
-    }, [])
+    }, [dispatch])
     return (
         <Container>
             <Row >

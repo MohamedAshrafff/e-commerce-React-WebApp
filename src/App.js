@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./Components/MainComponents/NavBar";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
 import ProductDetails from "./Pages/ProductDetails";

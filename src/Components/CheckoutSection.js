@@ -10,7 +10,7 @@ export default function CheckoutSection() {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const handleClick = () => {
-        const localCartStorage = [] = localStorage.getItem('Order') ? JSON.parse(localStorage.getItem('Order')) : []
+        const localCartStorage = localStorage.getItem('Order') ? JSON.parse(localStorage.getItem('Order')) : []
         let clonedCart = [[...cart], [{ date: (new Date().getDate() + `-` + new Date().getMonth() + `-` + new Date().getFullYear()) }]]
         localCartStorage.push([...clonedCart])
         localStorage.clear()

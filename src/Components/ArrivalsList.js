@@ -28,7 +28,7 @@ export default function ArrivalsList() {
     })
     useEffect(() => {
         dispatch(getAllProducts())
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         setItems({ data: [...newItems], filter: 'random' })
@@ -43,9 +43,9 @@ export default function ArrivalsList() {
                         {items.filter === 'random' ? 'Filter By' : 'Filter by ' + items.filter}
                     </button>
                     <ul className="dropdown-menu ">
-                        <li><a className="dropdown-item" onClick={() => { handleFilter('High to Low') }}>High To Low Price</a></li>
-                        <li><a className="dropdown-item" onClick={() => { handleFilter('Low to High') }}>Low to High Price</a></li>
-                        <li><a className="dropdown-item" onClick={() => { handleFilter('Rating') }}>Rating</a></li>
+                        <li><span className="dropdown-item" onClick={() => { handleFilter('High to Low') }}>High To Low Price</span></li>
+                        <li><span className="dropdown-item" onClick={() => { handleFilter('Low to High') }}>Low to High Price</span></li>
+                        <li><span className="dropdown-item" onClick={() => { handleFilter('Rating') }}>Rating</span></li>
                     </ul>
                 </div>
             </div>

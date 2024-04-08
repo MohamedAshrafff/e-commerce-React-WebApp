@@ -2,7 +2,7 @@ import React from 'react'
 import PrevOrders from '../Components/PrevOrders'
 import { Link } from 'react-router-dom'
 export default function OtherPage() {
-    const orders = [] = localStorage.getItem('Order') ? JSON.parse(localStorage.getItem('Order')) : []
+    const orders = localStorage.getItem('Order') ? JSON.parse(localStorage.getItem('Order')) : []
     return (
         <div className='mt-5' style={{ minHeight: '100vh' }}>
             {orders.length === 0 ?

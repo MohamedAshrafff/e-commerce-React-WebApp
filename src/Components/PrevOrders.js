@@ -13,7 +13,7 @@ export default function PrevOrders(props) {
         const totalItems = order[0].reduce((accumaltor, ord) => accumaltor += (ord.quantity), 0)
 
         return (
-            <Link style={{ textDecoration: 'none', color: 'black', ...styles.size }}>
+            <Link key={index} style={{ textDecoration: 'none', color: 'black', ...styles.size }}>
                 <div key={index} className='mx-2 mt-3 d-flex justify-content-between align-items-center'>
                     <div className='d-flex text-center flex-column justify-content-around'>
                         <span className='text-danger'>{(randomNumber + (index))}</span>
