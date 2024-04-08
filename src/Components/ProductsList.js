@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Product from "./Product"
 import { Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ export default function ProductsList() {
 
     const handleCategoryClick = (cat) => {
         dispatch(setCategory(cat))
-        cat == 'All' ? dispatch(getAllProducts()) : dispatch(getProductsInCategory(cat))
+        cat === 'All' ? dispatch(getAllProducts()) : dispatch(getProductsInCategory(cat))
     }
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function ProductsList() {
     }
     const categoriesButtons = categories.map((cat) => {
         return (
-            <button className={`btn btn-outline-dark ${selectedCategory == cat ? 'active' : ''} col w-auto`} key={cat} onClick={() => { handleCategoryClick(cat) }} style={{ margin: "0.5%" }}>
+            <button className={`btn btn-outline-dark ${selectedCategory === cat ? 'active' : ''} col w-auto`} key={cat} onClick={() => { handleCategoryClick(cat) }} style={{ margin: "0.5%" }}>
                 {cat}
             </button >
         )
@@ -49,7 +49,7 @@ export default function ProductsList() {
             <div className='container mt-5'>
                 <h2>Browse By Category</h2>
                 <div className='text-center'>
-                    <button className={`btn btn-outline-dark ${selectedCategory == 'All' ? 'active' : ''} col w-auto`} onClick={() => { handleCategoryClick('All') }} style={{ margin: "0.5%" }}>
+                    <button className={`btn btn-outline-dark ${selectedCategory === 'All' ? 'active' : ''} col w-auto`} onClick={() => { handleCategoryClick('All') }} style={{ margin: "0.5%" }}>
                         All
                     </button>
                     {categoriesButtons}

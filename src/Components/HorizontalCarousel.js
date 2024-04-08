@@ -66,7 +66,7 @@ export default function HorizontalCarousel(props) {
             <p className="fs-4 mb-2">Reccommended Items</p>
             <div className="slider-container " style={{ maxHeight: '50vh', padding: '30px' }}>
                 <Slider {...settings}>
-                    {items.length != 0 && itemsMapped}
+                    {items.length !== 0 && itemsMapped}
                 </Slider>
             </div>
         </div>

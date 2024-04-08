@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -27,10 +27,10 @@ export default function NavBar() {
                     <Navbar.Toggle aria-controls="navbarNav" onClick={() => toggleChecker()} />
                     <Navbar.Collapse id="navbarNav" >
                         <Nav className="me-auto text-center">
-                            <Link className={`nav-link mx-3 ${loc.pathname == '/' ? 'active fw-bold  border-bottom border-2 ' : ''}`} onClick={() => toggleChecker()} to={''}>Home</Link>
-                            <Link className={`nav-link mx-3 ${loc.pathname == '/about' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'about'}>About</Link>
-                            <Link className={`nav-link mx-3 ${loc.pathname == '/products' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'products'}>Products</Link>
-                            <Link className={`nav-link mx-3 ${loc.pathname == '/other' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'other'}>Other</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname === '/' ? 'active fw-bold  border-bottom border-2 ' : ''}`} onClick={() => toggleChecker()} to={''}>Home</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname === '/about' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'about'}>About</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname === '/products' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'products'}>Products</Link>
+                            <Link className={`nav-link mx-3 ${loc.pathname === '/other' ? 'active  fw-bold border-bottom border-2' : ''}`} onClick={() => toggleChecker()} to={'other'}>Other</Link>
                         </Nav>
                         {expanded && <div style={{ height: '20px' }}></div>}
                         <Link to={'cart'} className="rounded-circle" onClick={() => toggleChecker()}

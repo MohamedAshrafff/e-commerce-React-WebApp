@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, addToFavourites } from '../Redux/Slices/cart-slice';
+import { addToCart } from '../Redux/Slices/cart-slice';
 import { setCategory } from '../Redux/Slices/products-slice';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'

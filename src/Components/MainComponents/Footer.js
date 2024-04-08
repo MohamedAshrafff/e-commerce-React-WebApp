@@ -3,19 +3,16 @@ import { Container, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { setCategory, getProductsInCategory } from '../../Redux/Slices/products-slice'
 import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 export default function Footer() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const loc = useLocation()
     const onCategoryClick = (category) => {
         navigate('/products')
         dispatch(setCategory(category))
         dispatch(getProductsInCategory(category))
         window.scrollTo(0, 0)
-        // loc.pathname === '/products' ? window.location.reload() : navigate('/products')
     }
 
 

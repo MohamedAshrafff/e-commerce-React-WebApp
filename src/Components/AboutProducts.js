@@ -21,12 +21,12 @@ export default function AboutProducts() {
                     <p className="">{Texts.aboutParagraph}</p>
                 </div>
                 <div className="col-md-6 col-12 text-start mt-5">
-                    <img className='text-danger' src={product} style={styles.img} />
+                    <img className='text-danger' src={product} style={styles.img} alt='product' />
                     <p className="fs-2 text-center mt-3">Products</p>
                     <p className="fs-1 text-center text-danger">{items.length}</p>
                 </div>
                 <div className="col-md-6 col-12 text-start mt-5">
-                    <img className='text-danger ' src={cat} style={styles.img} />
+                    <img className='text-danger ' src={cat} style={styles.img} alt='product' />
                     <p className="fs-2 text-center mt-3">Categories</p>
                     <p className="fs-1 text-center text-danger">{categories.length}</p>
                 </div>
