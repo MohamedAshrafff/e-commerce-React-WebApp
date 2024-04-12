@@ -20,25 +20,30 @@ export default function CartProduct(prod) {
                 <div className='col-7 d-flex justify-content-center flex-column'>
                     <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'black' }}>{product.title}</Link>
                     <p>Price : <span className='text-danger' style={{ ...styles.weight }}>${product.price}</span></p>
-                    <div className='d-flex justify-content-start'>
-                        <div>
+                    {
+                        prod.isOrder ?
+                            <p>Quantity : <span style={{ ...styles.weight }}>{product.quantity}</span></p>
 
-                            <button style={{ ...styles.btnWidth, ...styles.weight, ...styles.size }}
-                                className={`p-0 btn btn-danger text-center ${product.quantity === 1 ? `disabled` : ``} `} onClick={() => { dispatch(removeFromCart(product)) }}>
-                                -
-                            </button>
-                            <span className='mx-3' style={styles.weight}>{product.quantity}</span>
-                            <button style={{ ...styles.btnWidth, ...styles.weight, ...styles.size }}
-                                className='p-0 btn btn-success' onClick={() => { dispatch(addToCart(product)) }}>
-                                +
-                            </button>
-                        </div>
-                        <div>
-                            <span className='text-end text-danger lola fs-4 ms-2' onClick={() => { dispatch(removeProduct(product)) }}>
-                                <RiDeleteBin6Fill />
-                            </span>
-                        </div>
-                    </div>
+                            :
+                            <div className='d-flex justify-content-md-start  justify-content-between'>
+                                <div>
+                                    <button style={{ ...styles.btnWidth, ...styles.weight, ...styles.size }}
+                                        className={`p-0 btn btn-danger text-center ${product.quantity === 1 ? `disabled` : ``} `} onClick={() => { dispatch(removeFromCart(product)) }}>
+                                        -
+                                    </button>
+                                    <span className='mx-3' style={styles.weight}>{product.quantity}</span>
+                                    <button style={{ ...styles.btnWidth, ...styles.weight, ...styles.size }}
+                                        className='p-0 btn btn-success' onClick={() => { dispatch(addToCart(product)) }}>
+                                        +
+                                    </button>
+                                </div>
+                                <div>
+                                    <span className='text-end text-danger click-effect fs-4 ms-md-5' onClick={() => { dispatch(removeProduct(product)) }}>
+                                        <RiDeleteBin6Fill />
+                                    </span>
+                                </div>
+                            </div>
+                    }
                 </div>
                 <div className='d-flex align-items-center justify-content-center col-2'>
                     <p className='text-danger' style={styles.weight}>${(product.price * product.quantity).toFixed(2)}</p>

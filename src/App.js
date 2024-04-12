@@ -9,6 +9,7 @@ import CartPage from "./Pages/CartPage";
 import './index.css';
 import Footer from "./Components/MainComponents/Footer";
 import OtherPage from "./Pages/OtherPage";
+import OrderSummary from "./Pages/OrderSummary";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:productId" element={<ProductDetails />} />
           <Route path="/other" element={<OtherPage />} />
+          <Route path="/order/:orderId" element={<OrderSummary />} />
         </Routes>
         <Footer />
       </div>

@@ -15,7 +15,7 @@ export default function HorizontalCarousel(props) {
         speed: 2000,
         autoplaySpeed: 2200,
         cssEase: "linear",
-        arrows: false,
+        arrows: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -38,7 +38,8 @@ export default function HorizontalCarousel(props) {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    autoplay: false,
                 }
             }
         ]
