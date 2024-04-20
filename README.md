@@ -22,15 +22,5 @@ This command will start the development server and open the application in your 
 4. **Explore and Enjoy!**: 
 Once the application is running, you can start exploring different product categories, apply filters, and enjoy shopping!
 
-## Contributing
-
-- Fork the repository.
-- Create your feature branch (`git checkout -b feature/YourFeature`).
-- Commit your changes (`git commit -am 'Add some feature'`).
-- Push to the branch (`git push origin feature/YourFeature`).
-- Create a new Pull Request.
-
-## Feedback
-
 If you have any feedback, suggestions, or encounter any issues while using our E-Commerce website, please don't hesitate to reach out . 
 
